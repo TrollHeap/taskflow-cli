@@ -2,7 +2,7 @@
 
 Checklist :
 
-* [ ] Suspension/reprise de process interactif (`Ctrl-Z`/`fg`, gestion des jobs en shell natif)
+* [?] Suspension/reprise de process interactif (`Ctrl-Z`/`fg`, gestion des jobs en shell natif)
 * [~] Pipe, redirection et duplication de flux (`|`, `>`, `>>`, `<`, `2>`, `tee`, rediriger stdout/stderr)
 * [ ] Maîtrise des flags avancés des coreutils :
   * `date -d` (parse anglais, conversion TZ…)

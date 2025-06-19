@@ -1,13 +1,7 @@
-.PHONY: checklist log stats reset
+.PHONY: taskflow taskswitch
 
-checklist:
+taskflow:
 	@python3 cli.py
 
-log:
-	@python3 cli.py --log
-
-stats:
-	@python3 cli.py --stats
-
-reset:
-	@python3 cli.py --reset
+taskswitch:
+	@python3 cli.py --switch
