@@ -1,5 +1,5 @@
 from core.back import read_checklist, update_status
-from core.ui_cli import show_checklist, console
+from core.ui_cli import show_checklist_ui, console
 from core.model import Status
 from config.flags import FLAGS_INPUT, FLAGS_HELP
 
@@ -12,7 +12,7 @@ def run_tunnel_mode():
         return
     for item in tunnel_items:
         console.rule("[bold blue]Mode Révision Rapide (Tunnel)")
-        show_checklist([item])
+        show_checklist_ui([item])
         console.print(f"[dim]Nouveau flag ?[/dim] {FLAGS_HELP}, [q]=quitter")
         flag_choix = console.input("> ").strip()
         if flag_choix == "q":

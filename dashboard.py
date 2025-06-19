@@ -1,6 +1,6 @@
 from core.back import read_checklist, stats, focus
 from core.io_files import read_journal
-from core.ui_cli import show_checklist, show_focus, console
+from core.ui_cli import show_checklist_ui, show_focus_ui, console
 from rich.progress import Progress
 
 
@@ -17,9 +17,9 @@ def afficher_dashboard():
         f"[magenta]{s['review']} à revoir[/magenta] | "
         f"[red]{s['todo']} à faire[/red] | [dim]{s['total']} total[/dim]\n"
     )
-    show_checklist(items, title="Checklist Complète")
+    show_checklist_ui(items, title="Checklist Complète")
     console.print()
-    show_focus(focus(items, n=3))
+    show_focus_ui(focus(items, n=3))
 
     recent = read_journal(n=5)
     if recent:

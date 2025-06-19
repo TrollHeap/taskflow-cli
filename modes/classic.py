@@ -1,5 +1,5 @@
 from core.back import read_checklist, update_status
-from core.ui_cli import show_checklist, console
+from core.ui_cli import show_checklist_ui, console
 from core.model import Status
 from config.flags import FLAGS_INPUT, FLAGS_HELP
 
@@ -11,7 +11,7 @@ def run_classic_mode():
     """
     while True:
         _, items = read_checklist()
-        show_checklist(items)
+        show_checklist_ui(items)
         choix = console.input("[bold][cyan]Numéro à modifier[/cyan][/bold] ([dim]Entrée pour quitter[/dim]) : ").strip()
         if not choix:
             return  # sortie propre
