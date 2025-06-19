@@ -12,7 +12,18 @@ FLAG_DISPLAY = {
 }
 
 
-def show_checklist(items, title="Checklist"):
+def select_checklist_ui(files):
+    table = Table(title="Checklists disponibles", header_style="bold magenta")
+    table.add_column("No", style="cyan", justify="right")
+    table.add_column("Nom", style="white")
+    for i, f in enumerate(files):
+        table.add_row(str(i + 1), f.name)
+    console.print(table)
+    choix = console.input("[bold]Numéro à ouvrir[/bold] : ").strip()
+    return choix
+
+
+def show_checklist_ui(items, title="Checklist"):
     table = Table(show_header=True, header_style="bold", show_lines=False)
     table.add_column("No", style="cyan", justify="right", width=3)
     table.add_column("Statut", justify="center", width=6)
@@ -22,7 +33,7 @@ def show_checklist(items, title="Checklist"):
     console.print(table)
 
 
-def show_focus(items):
+def show_focus_ui(items):
     table = Table(title="Focus du jour", show_header=True, header_style="bold")
     table.add_column("No", width=4)
     table.add_column("Statut", width=6)
