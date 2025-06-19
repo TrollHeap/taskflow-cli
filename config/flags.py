@@ -1,4 +1,4 @@
-from .model import Status
+from core.model import Status
 
 FLAGS_INPUT = {
     "1": Status.DONE,

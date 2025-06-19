@@ -1,7 +1,7 @@
 from core.back import read_checklist, update_status
 from core.ui_cli import show_checklist, console
 from core.model import Status
-from core.flags import FLAGS_INPUT, FLAGS_HELP
+from config.flags import FLAGS_INPUT, FLAGS_HELP
 
 
 def run_classic_mode():
