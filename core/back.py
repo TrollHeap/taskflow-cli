@@ -1,5 +1,5 @@
 import re
-from .model import ChecklistItem, Status
+from .model import Status
 from .io_files import read_checklist, write_checklist, append_journal
 
 
