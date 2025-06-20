@@ -1,16 +1,16 @@
 from core.back import read_checklist, update_status
-from core.ui_cli import show_checklist_ui, console
+from ui.ui_cli import show_checklist_ui, console
 from core.model import Status
 from config.flags import FLAGS_INPUT, FLAGS_HELP
 
 
-def run_classic_mode():
+def run_classic_mode(ck_path, log_path):
     """
-    Mode classique : navigation interactive,
-    coche/décoche n’importe quelle tâche à la main.
+    Mode classique : navigation interactive, coche/décoche n’importe quelle tâche à la main.
+    Prend en paramètre le chemin checklist et log.
     """
     while True:
-        _, items = read_checklist()
+        _, items = read_checklist(path=ck_path)
         show_checklist_ui(items)
         choix = console.input("[bold][cyan]Numéro à modifier[/cyan][/bold] ([dim]Entrée pour quitter[/dim]) : ").strip()
         if not choix:
@@ -37,7 +37,8 @@ def run_classic_mode():
                 console.print("[bold green]Bravo, tâche validée ![/bold green] :tada:")
             note_user = console.input("[dim]Note optionnelle (Entrée pour rien)[/dim] : ").strip()
             note = f"{note} {note_user}".strip() if note_user else note
-            update_status(idx, new_flag, note or None)
+            # Ici on passe les paths
+            update_status(idx, new_flag, note or None, ck_path=ck_path, log_path=log_path)
             console.print("[dim]Checklist mise à jour.[/dim]\n")
         except ValueError:
             console.print("[red]Entrée non valide.[/red]\n")
