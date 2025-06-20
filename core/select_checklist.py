@@ -32,7 +32,6 @@ def select_checklist(force=False):
                 log_file.parent.mkdir(parents=True, exist_ok=True)
                 return f, log_file
 
-    # --- IMPORT ICI POUR CASSER LE CERCLE ---
     from ui.ui_cli import select_checklist_ui
     choix = select_checklist_ui(files, ck_dir)
     if not choix.isdigit() or not (1 <= int(choix) <= len(files)):
