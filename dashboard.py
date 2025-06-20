@@ -1,6 +1,6 @@
 from core.back import read_checklist, stats, focus
 from core.io_files import read_journal
-from core.ui_cli import show_checklist_ui, show_focus_ui, console
+from ui.ui_cli import show_checklist_ui, show_focus_ui, console
 from rich.progress import Progress
 
 
@@ -29,7 +29,6 @@ def afficher_dashboard():
     else:
         console.print("\n[dim](Aucune entrée de journal récente)[/dim]")
 
-    # Section "à revoir"
     to_review = [i for i in items if i.statut.name == "REVIEW"]
     if to_review:
         console.print("\n[bold magenta]Tâches à revoir spécifiquement :[/bold magenta]")
