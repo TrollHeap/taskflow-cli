@@ -3,13 +3,12 @@ from .model import ChecklistItem, Status
 from .io_files import read_checklist, write_checklist, append_journal
 
 
-def update_status(idx, new_status: Status, note=None):
-    lignes, items = read_checklist()
+def update_status(idx, new_status: Status, note=None, ck_path=None, log_path=None):
+    lignes, items = read_checklist(path=ck_path)
     item = items[idx]
-    # Remplace le flag dans la ligne d'origine
     lignes[item.idx] = re.sub(r"\[[ x~?]\]", f"[{new_status.value}]", lignes[item.idx])
-    write_checklist(lignes)
-    append_journal(item.texte, new_status, note)
+    write_checklist(lignes, path=ck_path)
+    append_journal(item.texte, new_status, note, path=log_path)
     return item.texte
 
 

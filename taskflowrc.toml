@@ -1,0 +1,23 @@
+[last_checklist]
+filename = "unix-training/shell-coreutils.md"
+selected_at = "2025-06-20T20:45:34"
+
+[ui]
+theme = "auto"
+progress_style = "bar"
+compact_mode = false
+show_focus = true
+
+[stats]
+total_checks = 0
+micro_victories_today = 0
+last_victory = "2025-06-20T17:38:00"
+
+[profile]
+adhd_mode = false
+
+[paths]
+checklist_dir = "checklists"
+log_dir = "logs"
+
+[custom]
