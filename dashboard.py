@@ -1,5 +1,5 @@
 from core.back import read_checklist, stats, focus
-from core.io_files import read_journal
+from ui.print_logs import print_logs_general
 from ui.ui_cli import show_checklist_ui, show_focus_ui, console
 from rich.progress import Progress
 
@@ -21,13 +21,7 @@ def afficher_dashboard():
     console.print()
     show_focus_ui(focus(items, n=3))
 
-    recent = read_journal(n=5)
-    if recent:
-        console.print("\n[bold]Journal récent :[/bold]")
-        for l in recent:
-            console.print("  [dim]" + l.strip() + "[/dim]")
-    else:
-        console.print("\n[dim](Aucune entrée de journal récente)[/dim]")
+    print_logs_general()
 
     to_review = [i for i in items if i.statut.name == "REVIEW"]
     if to_review:

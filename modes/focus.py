@@ -2,11 +2,13 @@ from core.back import read_checklist, update_status
 from ui.ui_cli import show_checklist_ui, console
 from core.model import Status
 from config.flags import FLAGS_INPUT, FLAGS_HELP
+from ui.print_logs import print_logs_files
 
 
 def run_focus_mode(ck_file=None, log_file=None):
     _, items = read_checklist(path=ck_file)
     focus_items = [item for item in items if item.statut in (Status.TODO, Status.REVIEW)]
+    print_logs_files(8)
     if not focus_items:
         console.print("[bold green]✅ Toutes les tâches sont cochées ou intermédiaires ![/bold green]")
         return
