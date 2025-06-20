@@ -1,25 +1,20 @@
 from rich.console import Console
 from rich.table import Table
-from .model import Status
+from config.flags import FLAG_DISPLAY
 
 console = Console()
 
-FLAG_DISPLAY = {
-    Status.DONE: "[green]✓[/green]",
-    Status.INTER: "[yellow]~[/yellow]",
-    Status.REVIEW: "[magenta]?[/magenta]",
-    Status.TODO: "[red]…[/red]",
-}
 
-
-def select_checklist_ui(files):
-    table = Table(title="Checklists disponibles", header_style="bold magenta")
-    table.add_column("No", style="cyan", justify="right")
-    table.add_column("Nom", style="white")
+def select_checklist_ui(files, ck_dir):
+    table = Table(show_header=True, header_style="bold")
+    table.add_column("No", style="cyan", justify="right", width=3)
+    table.add_column("Checklist", style="white")
     for i, f in enumerate(files):
-        table.add_row(str(i + 1), f.name)
+        rel_path = str(f.resolve().relative_to(ck_dir))
+        table.add_row(str(i + 1), rel_path)
+    console.print("\n== Checklists disponibles ==")
     console.print(table)
-    choix = console.input("[bold]Numéro à ouvrir[/bold] : ").strip()
+    choix = console.input("Numéro à ouvrir : ").strip()
     return choix
 
 
