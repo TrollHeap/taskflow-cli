@@ -6,7 +6,7 @@ Checklist :
 * [~] Pipe, redirection et duplication de flux (`|`, `>`, `>>`, `<`, `2>`, `tee`, rediriger stdout/stderr)
 * [ ] Coreutils avancés (`date -d`, `touch -d`, `sleep 0.2`, `env -i`, `nproc`, `tty`, `numfmt`…)
 * [ ] Exécution/test de scripts dans environnement minimal (`env -i`, `unset VAR`, process clean)
-* [ ] Recherche CLI : `grep`, `find`, `awk`, `sed`, natif + fallback modernes (`rg`, `fd`)
+* [~] Recherche CLI : `grep`, `find`, `awk`, `sed`, natif + fallback modernes (`rg`, `fd`)
 * [~] Navigation shell rapide : `cd`, `pushd`/`popd`, navigation efficace dans l’historique, outils genre `z`, `zoxide`
 * [x] Compréhension fine du rôle du shell (`sh`, `bash`, `zsh`, différence avec scripts POSIX)
 * [ ] Utilisation judicieuse des substitutions de commandes (`$(cmd)`, `` `cmd` ``), arithmétiques, expansions avancées
