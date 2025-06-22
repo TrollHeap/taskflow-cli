@@ -1,6 +1,7 @@
 import toml
 from pathlib import Path
 from copy import deepcopy
+from datetime import datetime
 
 CONFIG_PATH = Path("taskflowrc.toml")
 
@@ -51,13 +52,19 @@ def save_config(cfg):
 
 
 def get_checklist_dir():
+    """Return the checklist directory, creating it if missing."""
     cfg = load_config()
-    return Path(cfg.get("paths", {}).get("checklist_dir", "checklists"))
+    path = Path(cfg.get("paths", {}).get("checklist_dir", "checklists"))
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
 
 def get_log_dir():
+    """Return the log directory, creating it if needed."""
     cfg = load_config()
-    return Path(cfg.get("paths", {}).get("log_dir", "logs"))
+    path = Path(cfg.get("paths", {}).get("log_dir", "logs"))
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
 
 def get_last_checklist():
@@ -67,7 +74,6 @@ def get_last_checklist():
 
 
 def set_last_checklist(filename):
-    from datetime import datetime
     cfg = load_config()
     cfg["last_checklist"]["filename"] = filename
     cfg["last_checklist"]["selected_at"] = datetime.now().isoformat(timespec="seconds")

@@ -41,7 +41,9 @@ def run_classic_mode(ck_path, log_path):
             note_user = console.input("[dim]Note optionnelle (Entrée pour rien)[/dim] : ").strip()
             note = f"{note} {note_user}".strip() if note_user else note
             # Ici on passe les paths
-            update_status(idx, new_flag, note or None, ck_path=ck_path, log_path=log_path)
+            update_status(
+                idx, new_flag, note or None, ck_path=ck_path, log_path=log_path
+            )
             console.print("[dim]Checklist mise à jour.[/dim]\n")
         except ValueError:
             console.print("[red]Entrée non valide.[/red]\n")

@@ -9,9 +9,15 @@ from modes.help import show_help
 
 def main():
     parser = argparse.ArgumentParser(description="Unix Training Checklist")
-    parser.add_argument('--switch', action='store_true', help='Choisir une checklist au démarrage')
-    parser.add_argument('--focus', action='store_true', help='Mode Focus (révision rapide)')
-    parser.add_argument('--aide', action='store_true', help='Afficher l’aide Taskflow CLI personnalisée')
+    parser.add_argument(
+        "--switch", action="store_true", help="Choisir une checklist au démarrage"
+    )
+    parser.add_argument(
+        "--focus", action="store_true", help="Mode Focus (révision rapide)"
+    )
+    parser.add_argument(
+        "--aide", action="store_true", help="Afficher l’aide Taskflow CLI personnalisée"
+    )
     # parser.add_argument('--quiz', action='store_true', help='Mode quiz')  # etc.
     args = parser.parse_args()
 

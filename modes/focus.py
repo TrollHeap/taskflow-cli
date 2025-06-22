@@ -34,7 +34,9 @@ def run_focus_mode(ck_file=None, log_file=None):
             console.print("[bold green]Bravo, tâche validée ![/bold green] :tada:")
         note_user = console.input("[dim]Note optionnelle (Entrée pour rien)[/dim] : ").strip()
         note = f"{note} {note_user}".strip() if note_user else note
-        update_status(item.idx, new_flag, note or None, ck_path=ck_file, log_path=log_file)
+        update_status(
+            item.idx, new_flag, note or None, ck_path=ck_file, log_path=log_file
+        )
         console.print("[dim]Tâche mise à jour.[/dim]\n")
     console.rule("[bold blue]Mode tunnel terminé[/bold blue]\n")
     return
