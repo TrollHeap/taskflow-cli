@@ -1,7 +1,7 @@
 import sys
 import argparse
 from ui.ui_cli import console
-from core import select_checklist
+from core.select_checklist import select_checklist
 from modes.focus import run_focus_mode
 from modes.classic import run_classic_mode
 from modes.help import show_help

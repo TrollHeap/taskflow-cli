@@ -1,4 +1,6 @@
-from core import read_checklist, update_status, Status
+from core.back import update_status
+from core.io_files import read_checklist
+from core.model import Status
 from ui.ui_cli import show_checklist_ui, console
 from ui.print_logs import print_logs_files
 from config.flags import FLAGS_INPUT, FLAGS_HELP

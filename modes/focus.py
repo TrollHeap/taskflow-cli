@@ -1,4 +1,6 @@
-from core import read_checklist, update_status, Status
+from core.back import update_status
+from core.io_files import read_checklist
+from core.model import Status
 from ui.ui_cli import show_checklist_ui, console
 from config.flags import FLAGS_INPUT, FLAGS_HELP
 from ui.print_logs import print_logs_files
@@ -32,8 +34,7 @@ def run_focus_mode(ck_file=None, log_file=None):
             console.print("[bold green]Bravo, tâche validée ![/bold green] :tada:")
         note_user = console.input("[dim]Note optionnelle (Entrée pour rien)[/dim] : ").strip()
         note = f"{note} {note_user}".strip() if note_user else note
-        # Passe les chemins explicitement ici si tu veux du pur functional
-        update_status(item.idx, new_flag, note or None, ck_file=ck_file, log_file=log_file)
+        update_status(item.idx, new_flag, note or None, ck_path=ck_file, log_path=log_file)
         console.print("[dim]Tâche mise à jour.[/dim]\n")
     console.rule("[bold blue]Mode tunnel terminé[/bold blue]\n")
     return
