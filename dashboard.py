@@ -1,25 +1,17 @@
 from core.back import read_checklist, stats, focus
 from ui.print_logs import print_logs_general
 from ui.ui_cli import show_checklist_ui, show_focus_ui, console
-from rich.progress import Progress
+from ui.dashboard_ui import dashboard_panel
 
 
-def afficher_dashboard():
+def run_dashboard():
     items = read_checklist()[1]
     s = stats(items)
     console.rule("[bold green]UNIX Roadmap — Tableau de Bord")
-    progress = (s["fait"] / s["total"]) if s["total"] else 0
-    with Progress(transient=True) as prog:
-        prog.add_task("Progression", total=1.0, completed=progress)
-    console.print(
-        f"\n[bold]Avancement :[/bold] [green]{s['fait']} faits[/green] | "
-        f"[yellow]{s['inter']} intermédiaires[/yellow] | "
-        f"[magenta]{s['review']} à revoir[/magenta] | "
-        f"[red]{s['todo']} à faire[/red] | [dim]{s['total']} total[/dim]\n"
-    )
+    console.print(dashboard_panel(s, width=20))
     show_checklist_ui(items, title="Checklist Complète")
     console.print()
-    show_focus_ui(focus(items, n=3))
+    # show_focus_ui(focus(items, n=4))
 
     print_logs_general()
 
@@ -31,4 +23,4 @@ def afficher_dashboard():
 
 
 if __name__ == "__main__":
-    afficher_dashboard()
+    run_dashboard()
