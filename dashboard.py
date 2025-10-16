@@ -32,7 +32,6 @@ def run_dashboard():
 
     show_checklist_ui(items, title="Checklist Complète", current_file=rel_path)
 
-    console.print()
     print_logs_general()
 
 

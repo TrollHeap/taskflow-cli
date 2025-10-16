@@ -14,9 +14,9 @@ def dashboard_panel(stats_dict, width=20):
     progress = (stats_dict["fait"] / total) if total else 0
     bar = _progress_bar(progress, width=width)
     return Panel(
-        f"{bar} {progress * 100:.0f}%\n"
-        f"\n[bold]Avancement :[/bold] [green]{stats_dict['fait']} faits[/green] | "
+        f"{bar} {progress * 100:.0f}%"
+        f"[bold] Avancement :[/bold] [green]{stats_dict['fait']} faits[/green] | "
         f"[yellow]{stats_dict['inter']} intermédiaires[/yellow] | "
         f"[magenta]{stats_dict['review']} à revoir[/magenta] | "
-        f"[red]{stats_dict['todo']} à faire[/red] | [dim]{total} total[/dim]\n"
+        f"[red]{stats_dict['todo']} à faire[/red] | [dim]{total} total[/dim]"
     )
