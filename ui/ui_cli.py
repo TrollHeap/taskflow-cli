@@ -1,6 +1,8 @@
 from rich.console import Console
 from rich.table import Table
 from config.flags import FLAG_DISPLAY
+from rich.panel import Panel
+from rich.text import Text
 
 console = Console()
 
@@ -18,13 +20,31 @@ def select_checklist_ui(files, ck_dir):
     return choix
 
 
-def show_checklist_ui(items, title="Checklist"):
+def show_checklist_ui(items, title="Checklist", current_file=None):
+    if current_file:
+        # nettoyage Markdown
+        clean_title = (
+            current_file.replace("##", "").replace("**", "").replace("1.", "").strip()
+        )
+
+        console.print(
+            Panel(
+                Text(clean_title, style="bold yellow"),
+                border_style="yellow",
+                title="📋Sujet",
+                title_align="left",
+                padding=(0, 2),
+            )
+        )
+
     table = Table(show_header=True, header_style="bold", show_lines=False)
     table.add_column("No", style="cyan", justify="right", width=3)
     table.add_column("Statut", justify="center", width=6)
     table.add_column("Tâche", style="white")
+
     for i, item in enumerate(items):
         table.add_row(str(i + 1), FLAG_DISPLAY[item.statut], item.texte)
+
     console.print(table)
 
 

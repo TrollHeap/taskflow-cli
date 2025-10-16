@@ -43,7 +43,7 @@ def read_checklist(
         raise FileNotFoundError(f"Checklist introuvable : {path}") from exc
     items = []
     for idx, line in enumerate(lignes):
-        m = re.match(r"^(\s*\*\s*)\[([ x~?])\]\s*(.+)$", line)
+        m = re.match(r"^(\s*[\*\-]\s*)\[([ x~?])\]\s*(.+)$", line)
         if m:
             stat = Status(m.group(2))
             items.append(ChecklistItem(idx=idx, statut=stat, texte=m.group(3)))
@@ -59,6 +59,7 @@ def write_checklist(lignes: List[str], path: Optional[Path] = None) -> None:
 
 def append_journal(texte, statut, note=None, path=None):
     from datetime import datetime
+
     if path is None:
         path = get_log_path()
     date = datetime.now().isoformat(timespec="seconds")
