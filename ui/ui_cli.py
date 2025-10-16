@@ -17,16 +17,20 @@ def dashboard_panel(stats_dict, width=20):
     total = stats_dict["total"]
     progress = (stats_dict["fait"] / total) if total else 0
     bar = _progress_bar(progress, width=width)
-    separator = "[bold cyan]━━━━━━━━━[/bold cyan]"
+
+    # separator = "=" * 60
+
     statuts = (
-        f"✅ [green]{stats_dict['fait']} faits[/green]  "
-        f"🔄 [yellow]{stats_dict['inter']} en cours[/yellow]  "
-        f"👀 [magenta]{stats_dict['review']} à revoir[/magenta]  "
-        f"📋 [red]{stats_dict['todo']} à faire[/red]  "
+        f"[X] [green]{stats_dict['fait']} faits[/green]  "
+        f"[~] [yellow]{stats_dict['inter']} en cours[/yellow]  "
+        f"[?] [magenta]{stats_dict['review']} à revoir[/magenta]  "
+        f"[ ] [red]{stats_dict['todo']} à faire[/red]  "
         f"[dim]Total: {total}[/dim]"
     )
+
     progression = f"{bar} [cyan bold]{progress * 100:.0f}%[/cyan bold]"
-    return f"[bold]Statuts:[/bold] {statuts}\n[bold]Progression:[/bold] {progression} \n {separator}"
+
+    return f"\nStatuts: {statuts}\nProgression: {progression}"
 
 
 def select_checklist_ui(files, ck_dir):

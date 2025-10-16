@@ -1,6 +1,6 @@
 ## 2. **Comparaison, conversion et récursivité**
 
-* [ ] J-6 – C02 ex07→09 : `ft_strupcase`, `ft_strlowcase`, `ft_strcapitalize`, `ft_strcmp`
+* [ ] J-6 – C02 ex06→09 : `ft_str_is_printable`, `ft_strupcase`, `ft_strlowcase`, `ft_strcapitalize`, `ft_strcmp`
 * [ ] J-7 – C03 ex00→04 : `ft_strncmp`, `ft_strcat`, `ft_strncat`, `ft_strstr`
 * [ ] J-8 – C04 ex00→03 : `ft_strlen`, `ft_putstr`, `ft_putnbr`, `ft_atoi`
 * [ ] J-9 – C04 ex04→05 : `ft_putnbr_base`, `ft_atoi_base`
