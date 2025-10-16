@@ -1,10 +1,32 @@
 from rich.console import Console
 from rich.table import Table
 from config.flags import FLAG_DISPLAY
-from rich.panel import Panel
-from rich.text import Text
 
 console = Console()
+
+
+def _progress_bar(ratio: float, width: int = 20) -> str:
+    """Return a simple textual progress bar."""
+    done = int(ratio * width)
+    remain = width - done
+    return "[green]" + "█" * done + "[/green]" + "░" * remain
+
+
+def dashboard_panel(stats_dict, width=20):
+    """Construit un résumé d'avancement horizontal descriptif et organisé."""
+    total = stats_dict["total"]
+    progress = (stats_dict["fait"] / total) if total else 0
+    bar = _progress_bar(progress, width=width)
+    separator = "[bold cyan]━━━━━━━━━[/bold cyan]"
+    statuts = (
+        f"✅ [green]{stats_dict['fait']} faits[/green]  "
+        f"🔄 [yellow]{stats_dict['inter']} en cours[/yellow]  "
+        f"👀 [magenta]{stats_dict['review']} à revoir[/magenta]  "
+        f"📋 [red]{stats_dict['todo']} à faire[/red]  "
+        f"[dim]Total: {total}[/dim]"
+    )
+    progression = f"{bar} [cyan bold]{progress * 100:.0f}%[/cyan bold]"
+    return f"[bold]Statuts:[/bold] {statuts}\n[bold]Progression:[/bold] {progression} \n {separator}"
 
 
 def select_checklist_ui(files, ck_dir):
@@ -26,25 +48,13 @@ def show_checklist_ui(items, title="Checklist", current_file=None):
         clean_title = (
             current_file.replace("##", "").replace("**", "").replace("1.", "").strip()
         )
-
-        console.print(
-            Panel(
-                Text(clean_title, style="bold yellow"),
-                border_style="yellow",
-                title="📋Sujet",
-                title_align="left",
-                padding=(0, 2),
-            )
-        )
-
+        console.print(f"📋 - [bold yellow]{clean_title}[/bold yellow]")
     table = Table(show_header=True, header_style="bold", show_lines=False)
     table.add_column("No", style="cyan", justify="right", width=3)
     table.add_column("Statut", justify="center", width=6)
     table.add_column("Tâche", style="white")
-
     for i, item in enumerate(items):
         table.add_row(str(i + 1), FLAG_DISPLAY[item.statut], item.texte)
-
     console.print(table)
 
 
