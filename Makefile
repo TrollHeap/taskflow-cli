@@ -45,17 +45,13 @@ reset: clean all
 # UV active automatiquement le venv et exécute la commande dans ce contexte
 
 taskflow:
-	@echo "🚀 Taskflow — mode normal"
 	@$(UV) run python cli.py
 
 taskfocus:
-	@echo "🎯 Taskflow — mode focus"
 	@$(UV) run python cli.py --focus
 
 taskswitch:
-	@echo "🔀 Taskflow — sélection checklist"
 	@$(UV) run python cli.py --switch
 
 taskboard:
-	@echo "📊 Taskflow — dashboard"
 	@$(UV) run python dashboard.py
